@@ -1,0 +1,18 @@
+<h1>Новини</h1>
+<ul class="news">
+	{{#each newsList}}
+	<li>
+		<a href="/news/index/{{id}}" class="well show">
+			<h2>{{{title}}}</h2>
+			<div>{{{short_description}}}</div>
+			<div>{{{source}}}</div>
+			<div>{{{date}}}</div>
+		</a>
+	</li>
+	{{/each}}
+</ul>
+<div class="clearfix">
+	<nav class="pull-right">
+		{{{pagination}}}
+	</nav>
+</div>

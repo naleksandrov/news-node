@@ -1,0 +1,40 @@
+<div class="news-edit">
+	<div class="alert alert-success collapse">
+		<strong>Успешно</strong> актуализирахте данните!
+	</div>
+	<form method="POST">
+		<input type="hidden" name="news_id" value="{{newsList.[0].news_id}}" />
+		{{> newsSource }}
+		<div class="text-center button-container">
+			<button type="button" class="btn btn-primary form-submit">Обновяване<span class="loader"></span></button>
+		</div>
+	</form>
+	{{#each langList}}
+		<fieldset>
+			<legend>Език {{language}}</legend>
+			<form method="POST">
+				<input type="hidden" name="id" value="{{#with (lookup ../newsList @index)}}{{id}}{{/with}}" />
+				<div class="form-group">
+					<label class="form-label" for="news-title{{@index}}">Заглавие</label>
+					<input type="text" class="form-control" id="news-title{{@index}}" name="title"
+					       value="{{#with (lookup ../newsList @index)}}{{title}}{{/with}}"
+					/>
+				</div>
+				<div class="row">
+					<div class="col-md-6 form-group">
+						<label class="form-label" for="news-short-description{{@index}}">Кратко описание</label>
+						<textarea class="form-control" id="news-short-description{{@index}}" name="short_description">{{#with (lookup ../newsList @index)}}{{short_description}}{{/with}}</textarea>
+					</div>
+					<div class="col-md-6 form-group">
+						<label class="form-label" for="news-description{{@index}}">Дълго описание</label>
+						<textarea class="form-control" id="news-description{{@index}}" name="description">{{#with (lookup ../newsList @index)}}{{description}}{{/with}}</textarea>
+					</div>
+				</div>
+				<div class="text-center button-container">
+					<button type="button" class="btn btn-primary form-submit">Обновяване<span class="loader"></span></button>
+				</div>
+			</form>
+		</fieldset>
+	{{/each}}
+	<a href="/admin/news/list/{{prevPage}}" class="btn btn-primary">Назад</a>
+</div>

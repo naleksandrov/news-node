@@ -1,0 +1,53 @@
+<div class="news-list">
+	<div class="form-group clearfix">
+		<a href="/admin/news/create" class="btn btn-primary">Добавяне</a>
+		<div class="pull-right">
+			<select class="form-control change-lang">
+				{{#each langList}}
+					<option data-lang-id="{{id}}" {{#ifEqual id ../langId}}selected{{/ifEqual}}>
+						{{language}}
+					</option>
+				{{/each}}
+			</select>
+		</div>
+	</div>
+		<table class="table table-bordered table-striped">
+			<thead>
+			<tr>
+				<th>id</th>
+				<th>Новина</th>
+				<th>Кратко описание</th>
+				<th>Дата</th>
+				<th>Действия</th>
+			</tr>
+			</thead>
+			<tbody>
+			{{#each newsList}}
+				<tr>
+					<td>{{id}}</td>
+					<td>{{{title}}}</td>
+					<td>{{{short_description}}}</td>
+					<td>{{{date}}}</td>
+					<td>
+						<a href="/admin/news/edit/{{id}}/{{../activePage}}" class="news-update">
+							<i class="fa fa-pencil fa-lg"></i>
+						</a>
+						<a href="javascript:;" class="news-delete" data-id="{{id}}">
+							<i class="fa fa-trash fa-lg"></i>
+						</a>
+					</td>
+				</tr>
+			{{/each}}
+			</tbody>
+		</table>
+		<nav class="pull-right">
+			{{{pagination}}}
+		</nav>
+</div>
+
+<div class="collapse">
+	<div id="dialog" title="Изтриване">
+		Сигурни ли сте че искате да изтриете тази новина
+	</div>​
+</div>
+

@@ -1,0 +1,44 @@
+<div>
+	{{#if msg}}
+		<div class="alert alert-success">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			{{#each msg}}
+				{{this}}
+			{{/each}}
+		</div>
+	{{/if}}
+	<form method="POST">
+		<div class="row">
+			<div class="col-sm-6 form-group">
+				<label class="form-label" for="news-source">Източник</label>
+				<input type="text" class="form-control" id="news-source" name="source" />
+			</div>
+			<div class="col-sm-6 form-group">
+				<label class="form-label" for="news-date">Дата</label>
+				<input type="text" class="form-control datepicker" id="news-date" name="date" />
+			</div>
+		</div>
+		{{#each langList}}
+			<fieldset>
+				<legend>Език {{language}}</legend>
+					<div class="form-group">
+						<label class="form-label" for="news-title{{@index}}">Заглавие</label>
+						<input type="text" class="form-control" id="news-title{{@index}}" name="title" />
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label class="form-label" for="news-short-description{{@index}}">Кратко описание</label>
+							<textarea class="form-control" id="news-short-description{{@index}}" name="short_description"></textarea>
+						</div>
+						<div class="col-md-6 form-group">
+							<label class="form-label" for="news-description{{@index}}">Дълго описание</label>
+							<textarea class="form-control" id="news-description{{@index}}" name="description"></textarea>
+						</div>
+					</div>
+			</fieldset>
+		{{/each}}
+		<div class="text-center">
+			<button type="submit" class="btn btn-primary form-submit">Запазване</button>
+		</div>
+	</form>
+</div>
